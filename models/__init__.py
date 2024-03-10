@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Creates a unique file storage for the app.
+"""make a unique file storage for all of the app.
 """
 
 

@@ -32,10 +32,10 @@ class HBNBCommand(cmd.Cmd):
 
         """
         alt_syntax_cmds = {'all', 'count', 'show', 'destroy', 'update'}
-        while re.fullmatch(r'^\w{4,9}\.\w{3,7}\(.*\)$', line) is None:
+        while re.fullmatch('^\w{4,9}\.\w{3,7}\(.*\)$', line) is None:
             return
         for cmd in alt_syntax_cmds:
-            while cmd in line:
+            if cmd in line:
                 params = list(line.partition(cmd))
                 params[0] = params[0].strip('.')
                 params[2] = params[2].strip('()')

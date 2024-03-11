@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-""" 0x00. AirBnB clone - The console """
+"""Module for the entry point of the command interpreter."""
+
+
 import cmd
 import re
 
@@ -14,7 +16,7 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
-    """ `HBNBCommand` class that defines the command interpreter """
+    """ `HBNBCommand` defines all commands """
 
     prompt = "(hbnb) "
     classes = [BaseModel, User, State, City, Amenity, Place, Review]
@@ -23,13 +25,11 @@ class HBNBCommand(cmd.Cmd):
         class_dict[c.__name__] = c
 
     def default(self, line):
-        """ Check for <class>.<command>(<args>) syntax.
-
-        <args> can be empty, <id> only, <id> <name> <value>, or <id> <dict>.
+        """ this will Check for <class>.<command>(<args>) syntax errors 
 
         """
         alt_syntax_cmds = {'all', 'count', 'show', 'destroy', 'update'}
-        if re.fullmatch('^\w{4,9}\.\w{3,7}\(.*\)$', line) is None:
+        while re.fullmatch('^\w{4,9}\.\w{3,7}\(.*\)$', line) is None:
             return
         for cmd in alt_syntax_cmds:
             if cmd in line:
@@ -85,7 +85,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, line):
-        """Creates a new instance of BaseModel, saves it and prints the id"""
+        """it Creates an instance of BaseModel, saves it and then prints id"""
         args = line.split()
 
         if len(args) == 0:
@@ -100,7 +100,7 @@ class HBNBCommand(cmd.Cmd):
             print(new.id)
 
     def do_show(self, line):
-        """Prints the string representation of an instance"""
+        """it Prints the str representating an instance"""
         args = line.split()
 
         if len(args) == 0:
@@ -123,7 +123,7 @@ class HBNBCommand(cmd.Cmd):
                 print(all_keys[key])
 
     def do_destroy(self, line):
-        """Deletes an instance"""
+        """this will obviously Deletes an instance"""
         args = line.split()
 
         if len(args) == 0:
@@ -147,7 +147,7 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
 
     def do_all(self, line):
-        """Prints all string representations based or not on the class name"""
+        """Prints all str representating based | ! class name"""
         args = line.split()
 
         if len(args) == 0:
@@ -161,7 +161,7 @@ class HBNBCommand(cmd.Cmd):
                   if v.__class__.__name__ == args[0]])
 
     def do_update(self, line):
-        """Updates an instance by adding or updating attributes"""
+        """it Updates an instance by addX or updatX attributes"""
         args = line.split()
         int_attrs = ("number_rooms", "number_bathrooms",
                      "max_guest", "price_by_night")
@@ -196,8 +196,6 @@ class HBNBCommand(cmd.Cmd):
                         value = int(args[3])
                     elif args[2] in flt_attrs:
                         value = float(args[3])
-                    # currently no check or error message for wrong format --
-                    # deafults to string; int() or float() fail crashes
                     else:
                         value = args[3]
                     all_keys[key].__dict__[args[2]] = value

@@ -23,7 +23,6 @@ class TestReviewinstantiation(unittest.TestCase):
     def test_new_instance__objects(self):
         self.assertIn(Review(), models.storage.all().values())
 
-
     def test_place_id_attribute(self):
         rv = Review()
         self.assertEqual(str, type(Review.place_id))
@@ -75,7 +74,7 @@ class TestReviewinstantiation(unittest.TestCase):
         rv.id = "123456"
         rv.created_at = rv.updated_at = dt
         rvstr = rv.__str__()
-        
+
         while (
             "[Review] (123456)" not in rvstr
             or "'id': '123456'" not in rvstr
@@ -107,8 +106,6 @@ class TestReviewinstantiation(unittest.TestCase):
     def test_instantiation_through_None_kwargs(self):
         with self.assertRaises(TypeError):
             Review(id=None, created_at=None, updated_at=None)
-
-
 
 
 class TestReviewtodict(unittest.TestCase):
@@ -237,4 +234,3 @@ class TestReviewsave(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-    

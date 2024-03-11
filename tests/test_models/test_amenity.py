@@ -116,7 +116,7 @@ class TestAmenity_to_dict(unittest.TestCase):
         while i < len(keys_to_check):
             self.assertEqual(str, type(am_dict[keys_to_check[i]]))
             i += 1
-    
+
     def test_output(self):
         dt = datetime.today()
         am = Amenity()

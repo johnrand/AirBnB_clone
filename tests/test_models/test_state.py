@@ -20,7 +20,6 @@ class TestStateinstantiation(unittest.TestCase):
     def test_noargs(self):
         self.assertEqual(State, type(State()))
 
-
     def test_name_attribute(self):
         st = State()
         self.assertEqual(str, type(State.name))
@@ -142,6 +141,7 @@ class TestStateToDict(unittest.TestCase):
         with self.assertRaises(TypeError):
             st.to_dict(None)
 
+
 class TestStatesave(unittest.TestCase):
     """Unittests testing save methods for State class."""
 
@@ -191,6 +191,7 @@ class TestStatesave(unittest.TestCase):
         stid = "State." + st.id
         with open("file.json", "r") as f:
             self.assertIn(stid, f.read())
+
 
 if __name__ == "__main__":
     unittest.main()

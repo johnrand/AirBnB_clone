@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """makes the unittests for all models/city.py.
 
 Unittest classes:
@@ -6,6 +7,7 @@ Unittest classes:
     TestCitysave
     TestCitytodict
 """
+
 import os
 import models
 import unittest
@@ -60,6 +62,7 @@ class TestCity_instantiation(unittest.TestCase):
         sleep(0.05)
         cy2 = City()
         self.assertLess(cy1.updated_at, cy2.updated_at)
+
 
 def test_str_representation(self):
     dt = datetime.today()
@@ -139,6 +142,7 @@ class TestCity_save(unittest.TestCase):
         with self.assertRaises(TypeError):
             cy.save(None)
 
+
 def test_save_updatesfile(self):
     cy = City()
     cy.save()
@@ -167,6 +171,7 @@ class TestCity_to_dict(unittest.TestCase):
         self.assertIn("updated_at", cy.to_dict())
         self.assertIn("__class__", cy.to_dict())
 
+
 def test_to_dict_attributes(self):
     cy = City()
     cy.middle_name = "My_First_Model"
@@ -176,13 +181,14 @@ def test_to_dict_attributes(self):
     dict_attributes = cy.to_dict()
     self.assertIn("my_number", dict_attributes)
 
+
 def test_attributes_are_strs(self):
     cy = City()
     cy_dict = cy.to_dict()
-    
     attributes = ["id", "created_at", "updated_at"]
     for attr in attributes:
         self.assertEqual(str, type(cy_dict[attr]))
+
 
 def test_output(self):
     dt = datetime.today()
@@ -197,14 +203,16 @@ def test_output(self):
     }
     assert cy.to_dict() == expected_dict
 
+
 def test_dunder_dict(self):
-        cy = City()
-        self.assertNotEqual(cy.to_dict(), cy.__dict__)
+    cy = City()
+    self.assertNotEqual(cy.to_dict(), cy.__dict__)
+
 
 def test_to_dict_through_arg(self):
-        cy = City()
-        with self.assertRaises(TypeError):
-            cy.to_dict(None)
+    cy = City()
+    with self.assertRaises(TypeError):
+        cy.to_dict(None)
 
 
 if __name__ == "__main__":

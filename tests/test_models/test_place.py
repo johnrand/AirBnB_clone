@@ -98,7 +98,6 @@ class TestPlaceinstantiation(unittest.TestCase):
         self.assertIn("price_by_night", dir(pl))
         self.assertNotIn("price_by_night", pl.__dict__)
 
-
     def test_two_places_uniqueids(self):
         pl1 = Place()
         pl2 = Place()
@@ -143,6 +142,7 @@ class TestPlaceinstantiation(unittest.TestCase):
     def test_instantiation_throuugh_None_kwargs(self):
         with self.assertRaises(TypeError):
             Place(id=None, created_at=None, updated_at=None)
+
 
 class TestPlacesave(unittest.TestCase):
     """Unittests testing save method of Place class."""
@@ -216,7 +216,6 @@ class TestPlacetodict(unittest.TestCase):
         for key in expected_keys:
             self.assertIn(key, pl_dict)
 
-
     def test_output(self):
         dt = datetime.today()
         pl = Place()
@@ -233,7 +232,6 @@ class TestPlacetodict(unittest.TestCase):
     def test_dunder_dict(self):
         pl = Place()
         self.assertNotEqual(pl.to_dict(), pl.__dict__)
-
 
     def test_attributes_are_strs(self):
         pl = Place()

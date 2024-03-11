@@ -51,12 +51,14 @@ class TestConsole(unittest.TestCase):
         """example 2: this will Tests console command interpreter.
         """
         self.assertIsNotNone(HBNBCommand())
+
         def test_help(self):
-        with patch('sys.stdout', new=StringIO()) as f:
-            self.console.onecmd("help")
-            output = f.getvalue().strip()
-            self.assertIn("Documented commands (type help <topic>):", output)
-            self.assertIn("EOF  help  quit", output)
+            with patch('sys.stdout', new=StringIO()) as f:
+                self.console.onecmd("help")
+                output = f.getvalue().strip()
+                self.assertIn("Documented commands(
+                        type help < topic >): ", output)
+                self.assertIn("EOF  help  quit", output)
 
     def test_create(self):
         with patch('sys.stdout', new=StringIO()) as f:
@@ -86,4 +88,3 @@ class TestConsole(unittest.TestCase):
             self.console.onecmd("show User {}".format(obj_id))
             output = f.getvalue().strip()
             self.assertEqual(output, "** no instance found **")
-

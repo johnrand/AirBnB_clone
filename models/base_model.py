@@ -35,9 +35,10 @@ class BaseModel:
             storage.new(self)
 
     def __str__(self):
-        """it Update public instance attribute updated_at
-        with current datetime and  BaseModel instance"""
-
+        """
+        It Update public instance attribute updated_at
+        with current datetime and  BaseModel instance
+        """
         return "[{}] ({}) {}".format(type(self).__name__, self.id, self.__dict__)
 
     def save(self):

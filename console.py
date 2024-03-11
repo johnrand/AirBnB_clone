@@ -1,7 +1,11 @@
 #!/usr/bin/python3
+<<<<<<< HEAD
 
 """ 0x00. AirBnB clone - The console
 """
+=======
+"""Module for the entry point of the command interpreter."""
+>>>>>>> 293c1cb4fea6db8d984ae73a617adb34402773e7
 
 
 import cmd
@@ -18,9 +22,13 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
+<<<<<<< HEAD
     """
     HBNBCommand` class that defines the command interpreter
     """
+=======
+    """ `HBNBCommand` defines all commands """
+>>>>>>> 293c1cb4fea6db8d984ae73a617adb34402773e7
 
     prompt = "(hbnb) "
     classes = [BaseModel, User, State, City, Amenity, Place, Review]
@@ -29,26 +37,29 @@ class HBNBCommand(cmd.Cmd):
         class_dict[c.__name__] = c
 
     def default(self, line):
-        """ Check for <class>.<command>(<args>) syntax.
-
-        <args> can be empty, <id> only, <id> <name> <value>, or <id> <dict>.
+        """ this will Check for <class>.<command>(<args>) syntax errors 
 
         """
         alt_syntax_cmds = {'all', 'count', 'show', 'destroy', 'update'}
+<<<<<<< HEAD
         if re.fullmatch(r'^\w{4,9}\.\w{3,7}\(.*\)$', line) is None:
+=======
+        while re.fullmatch('^\w{4,9}\.\w{3,7}\(.*\)$', line) is None:
+>>>>>>> 293c1cb4fea6db8d984ae73a617adb34402773e7
             return
         for cmd in alt_syntax_cmds:
-            if cmd in line:
-                # params tuple with ('<class>', '<cmd>', '(<args>)')
+            while cmd in line:
                 params = list(line.partition(cmd))
                 params[0] = params[0].strip('.')
-                # '(<args>)' becomes list of strings
                 params[2] = params[2].strip('()')
                 if '{' in params[2] and '}' in params[2]:
                     params[2] = params[2].split(', ', 1)
+                    
                 else:
                     params[2] = params[2].split(', ')
                 for i, arg in enumerate(params[2]):
+
+                    
                     params[2][i] = arg.strip('"')
                 if params[1] == 'all':
                     self.do_all(params[0])
@@ -63,6 +74,8 @@ class HBNBCommand(cmd.Cmd):
                 elif params[1] == 'destroy':
                     self.do_destroy(params[0] + ' ' + ' '.join(params[2]))
                 elif params[1] == 'update':
+
+                    
                     if '{' in params[2] and '}' in params[2]:
                         dict_arg = eval(params[2][1])
                         if isinstance(dict_arg, dict):
@@ -72,26 +85,27 @@ class HBNBCommand(cmd.Cmd):
                                                         params[2][0],
                                                         key, str(value)))
                                 self.do_update(update_line)
+                                
                     else:
                         update_line = (params[0] + ' ' +
                                        ' '.join(params[2]))
                         self.do_update(update_line)
 
     def do_quit(self, line):
-        """Quit command to exit the program"""
+        """it Quit command to exit the program"""
         return True
 
     def do_EOF(self, line):
-        """EOF to exit the program"""
+        """this is EOF to exit the program"""
         print()
         return True
 
     def emptyline(self):
-        """Empty lines are ignored"""
+        """its Emptys lines and ignore it"""
         pass
 
     def do_create(self, line):
-        """Creates a new instance of BaseModel, saves it and prints the id"""
+        """it Creates an instance of BaseModel, saves it and then prints id"""
         args = line.split()
 
         if len(args) == 0:
@@ -106,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
             print(new.id)
 
     def do_show(self, line):
-        """Prints the string representation of an instance"""
+        """it Prints the str representating an instance"""
         args = line.split()
 
         if len(args) == 0:
@@ -129,7 +143,7 @@ class HBNBCommand(cmd.Cmd):
                 print(all_keys[key])
 
     def do_destroy(self, line):
-        """Deletes an instance"""
+        """this will obviously Deletes an instance"""
         args = line.split()
 
         if len(args) == 0:
@@ -153,7 +167,7 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
 
     def do_all(self, line):
-        """Prints all string representations based or not on the class name"""
+        """Prints all str representating based | ! class name"""
         args = line.split()
 
         if len(args) == 0:
@@ -167,7 +181,7 @@ class HBNBCommand(cmd.Cmd):
                   if v.__class__.__name__ == args[0]])
 
     def do_update(self, line):
-        """Updates an instance by adding or updating attributes"""
+        """it Updates an instance by addX or updatX attributes"""
         args = line.split()
         int_attrs = ("number_rooms", "number_bathrooms",
                      "max_guest", "price_by_night")
@@ -202,8 +216,6 @@ class HBNBCommand(cmd.Cmd):
                         value = int(args[3])
                     elif args[2] in flt_attrs:
                         value = float(args[3])
-                    # currently no check or error message for wrong format --
-                    # deafults to string; int() or float() fail crashes
                     else:
                         value = args[3]
                     all_keys[key].__dict__[args[2]] = value

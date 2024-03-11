@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""Defines unittests for models/city.py.
+"""makes the unittests for all models/city.py.
 
 Unittest classes:
-    TestCity_instantiation
-    TestCity_save
-    TestCity_to_dict
+    TestCityinstantiation
+    TestCitysave
+    TestCitytodict
 """
 import os
 import models
@@ -15,7 +15,7 @@ from models.city import City
 
 
 class TestCity_instantiation(unittest.TestCase):
-    """Unittests for testing instantiation of the City class."""
+    """Unittests testing for the City class."""
 
     def test_noargs(self):
         self.assertEqual(City, type(City()))
@@ -97,7 +97,7 @@ def test_str_representation(self):
 
 
 class TestCity_save(unittest.TestCase):
-    """Unittests for testing save method of the City class."""
+    """Unittests testing save method for City class."""
 
     @classmethod
     def setUp(self):
@@ -155,7 +155,7 @@ def test_save_updatesfile(self):
 
 
 class TestCity_to_dict(unittest.TestCase):
-    """Unittests for testing to_dict method of the City class."""
+    """Unittests testing  methods of the City class."""
 
     def test_type(self):
         self.assertTrue(dict, type(City().to_dict()))

@@ -33,10 +33,8 @@ class HBNBCommand(cmd.Cmd):
             return
         for cmd in alt_syntax_cmds:
             while cmd in line:
-                # params tuple with ('<class>', '<cmd>', '(<args>)')
                 params = list(line.partition(cmd))
                 params[0] = params[0].strip('.')
-                # '(<args>)' becomes list of strings
                 params[2] = params[2].strip('()')
                 if '{' in params[2] and '}' in params[2]:
                     params[2] = params[2].split(', ', 1)
@@ -78,16 +76,16 @@ class HBNBCommand(cmd.Cmd):
                         self.do_update(update_line)
 
     def do_quit(self, line):
-        """Quit command to exit the program"""
+        """it Quit command to exit the program"""
         return True
 
     def do_EOF(self, line):
-        """EOF to exit the program"""
+        """this is EOF to exit the program"""
         print()
         return True
 
     def emptyline(self):
-        """Empty lines are ignored"""
+        """its Emptys lines and ignore it"""
         pass
 
     def do_create(self, line):

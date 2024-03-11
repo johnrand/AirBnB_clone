@@ -28,7 +28,7 @@ class HBNBCommand(cmd.Cmd):
         class_dict[c.__name__] = c
 
     def default(self, line):
-        """ this will Check for <class>.<command>(<args>) syntax errors
+        """ this will Check for <class>.<command>(<args>) syntax errors 
 
         """
         alt_syntax_cmds = {'all', 'count', 'show', 'destroy', 'update'}
@@ -36,12 +36,13 @@ class HBNBCommand(cmd.Cmd):
             return
         for cmd in alt_syntax_cmds:
             if cmd in line:
+
                 params = list(line.partition(cmd))
                 params[0] = params[0].strip('.')
+
                 params[2] = params[2].strip('()')
                 if '{' in params[2] and '}' in params[2]:
                     params[2] = params[2].split(', ', 1)
-
                 else:
                     params[2] = params[2].split(', ')
                 for i, arg in enumerate(params[2]):
@@ -61,7 +62,7 @@ class HBNBCommand(cmd.Cmd):
                 elif params[1] == 'update':
                     if '{' in params[2] and '}' in params[2]:
                         dict_arg = eval(params[2][1])
-                        if isinstance(dict_arg, dict):
+                        if type(dict_arg) == dict:
                             for key, value in dict_arg.items():
                                 # <class> <id> <attr name> <attr value>
                                 update_line = ' '.join((params[0],

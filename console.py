@@ -32,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
         if re.fullmatch('^\w{4,9}\.\w{3,7}\(.*\)$', line) is None:
             return
         for cmd in alt_syntax_cmds:
-            while cmd in line:
+            if cmd in line:
                 # params tuple with ('<class>', '<cmd>', '(<args>)')
                 params = list(line.partition(cmd))
                 params[0] = params[0].strip('.')

@@ -72,7 +72,7 @@ class TestAmenity_instantiation(unittest.TestCase):
         self.assertNotIn(None, am.__dict__.values())
 
     def test_instantiation_through_kwargs(self):
-        """instantiation with kwargs test method"""
+        """instantiation through kwargs test method"""
         dt = datetime.today()
         dt_iso = dt.isoformat()
         am = Amenity(id="345", created_at=dt_iso, updated_at=dt_iso)

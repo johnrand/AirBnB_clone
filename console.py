@@ -1,11 +1,7 @@
 #!/usr/bin/python3
-<<<<<<< HEAD
 
 """ 0x00. AirBnB clone - The console
 """
-=======
-"""Module for the entry point of the command interpreter."""
->>>>>>> 293c1cb4fea6db8d984ae73a617adb34402773e7
 
 
 import cmd
@@ -22,14 +18,9 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
-<<<<<<< HEAD
     """
     HBNBCommand` class that defines the command interpreter
     """
-=======
-    """ `HBNBCommand` defines all commands """
->>>>>>> 293c1cb4fea6db8d984ae73a617adb34402773e7
-
     prompt = "(hbnb) "
     classes = [BaseModel, User, State, City, Amenity, Place, Review]
     class_dict = dict()
@@ -37,15 +28,11 @@ class HBNBCommand(cmd.Cmd):
         class_dict[c.__name__] = c
 
     def default(self, line):
-        """ this will Check for <class>.<command>(<args>) syntax errors 
+        """ this will Check for <class>.<command>(<args>) syntax errors
 
         """
         alt_syntax_cmds = {'all', 'count', 'show', 'destroy', 'update'}
-<<<<<<< HEAD
-        if re.fullmatch(r'^\w{4,9}\.\w{3,7}\(.*\)$', line) is None:
-=======
-        while re.fullmatch('^\w{4,9}\.\w{3,7}\(.*\)$', line) is None:
->>>>>>> 293c1cb4fea6db8d984ae73a617adb34402773e7
+        while re.fullmatch(r'^\w{4,9}\.\w{3,7}\(.*\)$', line) is None:
             return
         for cmd in alt_syntax_cmds:
             while cmd in line:
@@ -54,12 +41,10 @@ class HBNBCommand(cmd.Cmd):
                 params[2] = params[2].strip('()')
                 if '{' in params[2] and '}' in params[2]:
                     params[2] = params[2].split(', ', 1)
-                    
+
                 else:
                     params[2] = params[2].split(', ')
                 for i, arg in enumerate(params[2]):
-
-                    
                     params[2][i] = arg.strip('"')
                 if params[1] == 'all':
                     self.do_all(params[0])

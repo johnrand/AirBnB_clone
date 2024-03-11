@@ -38,7 +38,6 @@ class FileStorage:
         from models.state import State
         from models.city import City
 
-
         classes = {"BaseModel": BaseModel,
                    "User": User,
                    "Place": Place,
@@ -91,6 +90,7 @@ class FileStorage:
                 "latitude": float,
                 "longitude": float,
             },
-            "Review": {"user_id": str, "place_id": str, "user_id": str, "text": str},
+            "Review": {
+                "user_id": str, "place_id": str, "user_id": str, "text": str},
         }
         return attributes

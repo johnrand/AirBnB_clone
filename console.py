@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-""" 0x00. AirBnB clone - The console """
+
+""" 0x00. AirBnB clone - The console
+"""
+
+
 import cmd
 import re
 
@@ -14,7 +18,9 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
-    """ `HBNBCommand` class that defines the command interpreter """
+    """
+    HBNBCommand` class that defines the command interpreter
+    """
 
     prompt = "(hbnb) "
     classes = [BaseModel, User, State, City, Amenity, Place, Review]
@@ -29,7 +35,7 @@ class HBNBCommand(cmd.Cmd):
 
         """
         alt_syntax_cmds = {'all', 'count', 'show', 'destroy', 'update'}
-        if re.fullmatch('^\w{4,9}\.\w{3,7}\(.*\)$', line) is None:
+        if re.fullmatch(r'^\w{4,9}\.\w{3,7}\(.*\)$', line) is None:
             return
         for cmd in alt_syntax_cmds:
             if cmd in line:
@@ -59,7 +65,7 @@ class HBNBCommand(cmd.Cmd):
                 elif params[1] == 'update':
                     if '{' in params[2] and '}' in params[2]:
                         dict_arg = eval(params[2][1])
-                        if type(dict_arg) == dict:
+                        if isinstance(dict_arg, dict):
                             for key, value in dict_arg.items():
                                 # <class> <id> <attr name> <attr value>
                                 update_line = ' '.join((params[0],
@@ -203,5 +209,6 @@ class HBNBCommand(cmd.Cmd):
                     all_keys[key].__dict__[args[2]] = value
                     storage.save()
 
+
 if __name__ == "__main__":
-        HBNBCommand().cmdloop()
+    HBNBCommand().cmdloop()

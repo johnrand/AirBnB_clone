@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Defines the BaseModel class."""
+"""makes the BaseModel class."""
 
 import uuid
 from datetime import datetime
@@ -7,10 +7,10 @@ from models import storage
 
 
 class BaseModel:
-    """BaseModel is a base class for other models."""
+    """BaseModel is a base class for all other models."""
 
     def __init__(self, *args, **kwargs):
-        """Initializes a new instance of the BaseModel class.
+        """Initializes an instance of the BaseModel class.
         """
 
         if kwargs:
@@ -35,20 +35,20 @@ class BaseModel:
             storage.new(self)
 
     def __str__(self):
-        """Update public instance attribute updated_at
-        with current datetime BaseModel instance"""
+        """it Update public instance attribute updated_at
+        with current datetime and  BaseModel instance"""
 
         return "[{}] ({}) {}".format(type(self).__name__, self.id, self.__dict__)
 
     def save(self):
-        """Updates the public instance attribute 'updated_at'
+        """it Updates the public instance attribute 'updated_at'
         with the current datetime and saves the BaseModel instance."""
 
         self.updated_at = datetime.now()
         storage.save()
 
     def to_dict(self):
-        """Returns a dictionary that containing all
+        """return1: Returns a dictionary that containing all
         keys/values of __dict__"""
 
         my_dict = self.__dict__.copy()
